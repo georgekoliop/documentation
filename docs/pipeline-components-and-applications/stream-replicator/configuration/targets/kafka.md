@@ -27,7 +27,7 @@ target {
 }
 ```
 
-If you want to use this as a [failure target](../../concepts/failure-model.md#failure-targets), then use failure_target instead of target.
+If you want to use this as a [failure target](/docs/pipeline-components-and-applications/stream-replicator/concepts/failure-model.md#failure-targets), then use failure_target instead of target.
 
 Here is an example of every configuration option:
 
@@ -103,4 +103,4 @@ target {
 }
 ```
 
-If you want to use this as a [failure target](../../concepts/failure-model.md#failure-targets), then use failure_target instead of target.
+If you want to use this as a [failure target](/docs/pipeline-components-and-applications/stream-replicator/concepts/failure-model.md#failure-targets), then use failure_target instead of target.

@@ -11,7 +11,7 @@ The AWS kinesis source requires the additional setup of a set of dynamoDB tables
 1. Configure the above required variables in the HCL file.
 2. Create three DynamoDB tables which will be used for checkpointing the progress of the replicator on the stream (*Note*: details below)
 
-Under the hood we are using a fork of the [Twitch Kinsumer](https://github.com/snowplow-devops/kinsumer) library which has defined this DynamoDB table structure - these tables need to be created by hand before the application can launch.
+Under the hood we are using a fork of the [Kinsumer](https://github.com/snowplow-devops/kinsumer) library which has defined this DynamoDB table structure - these tables need to be created by hand before the application can launch.
 
 | TableName                                | DistKey        |
 |------------------------------------------|----------------|
