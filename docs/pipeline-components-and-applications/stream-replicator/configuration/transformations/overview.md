@@ -22,19 +22,6 @@ Example:
 
 The below first filters out any `event_name` which does not match the regex `^page_view$`, then runs a custom javascript script to change the app_id value to `"1"`
 
-```hcl
-transform {
-  use "spEnrichedFilter" {
-    # keep only page views
-    atomic_field = "event_name"
-    regex = "^page_view$"
-  }
-}
-
-transform {
-  use "js" {
-    # changes app_id to "1"
-    source_b64 = "ZnVuY3Rpb24gbWFpbih4KSB7CiAgICB2YXIganNvbk9iaiA9IEpTT04ucGFyc2UoeC5EYXRhKTsKICAgIGpzb25PYmpbImFwcF9pZCJdID0gIjEiOwogICAgcmV0dXJuIHsKICAgICAgICBEYXRhOiBKU09OLnN0cmluZ2lmeShqc29uT2JqKQogICAgfTsKfQ=="
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/transformations-overview-example.hcl
 ```

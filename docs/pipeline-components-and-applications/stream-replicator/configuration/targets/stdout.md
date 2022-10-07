@@ -5,12 +5,8 @@ Stdout target doesn't have any configurable options - when configured it simply 
 
 Here is an example of the configuration:
 
-```hcl
-# Extended configuration for Stdout as a target (all options)
-
-target {
-  use "stdout" {}
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/targets/stdout-full-example.hcl
 ```
 
 If you want to use this as a [failure target](/docs/pipeline-components-and-applications/stream-replicator/concepts/failure-model.md#failure-targets), then use failure_target instead of target. 

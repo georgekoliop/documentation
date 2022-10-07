@@ -43,97 +43,46 @@ The output of the script must be an object (Javascript) or a table (Lua) which m
 
 To modify the messages data, return an object which conforms to EngineProtocol, with the `Data` field set to the modified data. The `Data` field may be returned as either a string, or an object (Javascript) / table (Lua).
 
-```js
-function main(input) {
-    // input is a string, so we parse it
-    var jsonObj = JSON.parse(input.Data);
-    
-    // set the name field
-    jsonObj.name = "Bruce Wayne"
-    return {
-        // Pass it back to Stream Replicator via the Data field
-        Data: jsonObj
-    };
-}
+```js reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-modify-example.js
 ```
 
-```lua
-function main(input)
-    -- input is a string, so we parse it
-    local json = require("json")
-    local jsonObj, _ = json.decode(input.Data)
-
-    -- set the name field
-    jsonObj.name = "Bruce Wayne"
-
-    -- Pass it back to Stream Replicator via the Data field
-    return { Data = jsonObj }
-end
+```lua reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-modify-example.lua
 ```
 
 ## Filtering
 
 If the `FilterOut` field of the output is returned as `true`, the message will be acked immediately and won't be sent to the target. This will be the behaviour regardelss of what is returned to the other fields in the protocol.
 
-```js
-function main(input) {
-    return { FilterOut: true }
-}
+```js reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-filter-example.js
 ```
 
-```lua
-function main(input)
-	return { FilterOut = true }
-end
+```lua reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-filter-example.lua
 ```
 
 ## Setting the Partition Key
 
 To set the Partition Key in the message, you can simply set the input's PartitionKey field, and return it:
 
-```js
-function main(input) {
-    input.PartitionKey = "myPk"
-    return input
-}
+```js reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-setpk-example.js
 ```
 
-```lua
-function main(input)
-	input.PartitionKey = "myPk"
-	return input
-end
+```lua reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-modify-example.lua
 ```
 
 Or, if modifying the data as well, return the modified data and PartitionKey field:
 
-```js
-function main(input) {
-    // input is a string, so we parse it
-    var jsonObj = JSON.parse(input.Data);
-    
-    // set the name field
-    jsonObj.name = "Bruce Wayne"
-    return {
-        // Pass it back to Stream Replicator via the Data field
-        Data: jsonObj,
-        PartitionKey: "myPk"
-    };
-}
+```js reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-setpk-modify-example.js
 ```
 
-```lua
-function main(input)
-    -- input is a string, so we parse it
-    local json = require("json")
-    local jsonObj, _ = json.decode(input.Data)
-
-    -- set the name field
-    jsonObj.name = "Bruce Wayne"
-
-    -- Pass it back to Stream Replicator via the Data field
-    return { Data = jsonObj, ParititionKey = "myPk" }
-end
+```lua reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-setpk-modify-example.lua
 ```
 
 ## Configuration

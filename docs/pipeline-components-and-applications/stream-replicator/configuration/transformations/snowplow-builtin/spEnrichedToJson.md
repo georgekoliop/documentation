@@ -6,9 +6,6 @@ spEnrichedToJson has no options.
 
 Example:
 
-```hcl
-transform {
-  use "spEnrichedToJson" {
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/snowplow-builtin/spEnrichedToJson-minimal-example.hcl
 ```

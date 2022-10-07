@@ -14,43 +14,14 @@ This example keeps all events whose `add_to_cart` event data at the `sku` field 
 
 Minimal configuration:
 
-```hcl
-transform {
-  use "spEnrichedFilterUnstructEvent" {
-    # Event name for custom event - this will match against the `event_name` field
-    unstruct_event_name = "add_to_cart"
-
-    # Path to the field to filter on, within the custom event
-    custom_field_path = "sku"
-
-    # Regex to match. Only matches against this regex are kept
-    regex = "test-data"
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/snowplow-builtin/spEnrichedFilterUnstructEvent-minimal-example.hcl
 ```
 
 Every configuration option:
 
-```hcl
-transform {
-  use "spEnrichedFilterUnstructEvent" {
-    # Event name for custom event - this will match against the `event_name` field 
-    unstruct_event_name = "add_to_cart"
-
-    # Path to the field to filter on, within the custom event
-    custom_field_path = "sku"
-
-    # Regex pattern to match against. Matches will be kept
-    regex = "test-data"
-
-    # Regex for the schema version to match. Events whose verison doesn't match this regex will be filtered out.
-    unstruct_event_version_regex = "1-*-*"
-
-    # Regex timeout - if the regex takes longer than this timeout (in seconds), the transformation fails
-    # This exists as certain regex patterns are less performant
-    regex_timeout = 10
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/snowplow-builtin/spEnrichedFilterUnstructEvent-full-example.hcl
 ```
 
 

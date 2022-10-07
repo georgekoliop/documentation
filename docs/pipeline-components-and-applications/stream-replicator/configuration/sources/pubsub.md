@@ -8,35 +8,12 @@ Authentication is done using a [GCP Service Account](https://cloud.google.com/do
 
 Here is an example of the minimum required configuration:
 
-```hcl
-# Minimal configuration for PubSub as a source (only required options)
-
-source {
-  use "pubsub" {
-    # GCP Project ID
-    project_id      = "project-id"
-
-    # subscription ID for the pubsub subscription
-    subscription_id = "subscription-id"
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/sources/pubsub-minimal-example.hcl
 ```
 
 Here is an example of every configuration option:
 
-```hcl
-# Extended configuration for PubSub as a source (all options)
-
-source {
-  use "pubsub" {
-    # GCP Project ID
-    project_id        = "project-id"
-
-    # subscription ID for the pubsub subscription
-    subscription_id   = "subscription-id"
-
-    # Maximum concurrent goroutines (lightweight threads) for message processing (default: 50)
-    concurrent_writes = 20
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/sources/pubsub-full-example.hcl
 ```

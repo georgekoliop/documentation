@@ -8,38 +8,12 @@ Authentication is done via the [AWS authentication environment variables](https:
 
 Here is an example of the minimum required configuration:
 
-```hcl
-# Minimal configuration for SQS as a source (only required options)
-
-source {
-  use "sqs" {
-    # SQS queue name
-    queue_name = "mySqsQueue"
-
-    # AWS region of SQS queue
-    region     = "us-west-1"
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/sources/sqs-minimal-example.hcl
 ```
 
 Here is an example of every configuration option:
 
-```hcl
-# Extended configuration for SQS as a source (all options)
-
-source {
-  use "sqs" {
-    # SQS queue name
-    queue_name = "mySqsQueue"
-
-    # AWS region of SQS queue
-    region     = "us-west-1"
-
-    # Role ARN to use on source queue
-    role_arn   = "arn:aws:iam::123456789012:role/myrole"
-
-    # Maximum concurrent goroutines (lightweight threads) for message processing (default: 50)
-    concurrent_writes = 20
-  }
-}
+```hcl reference
+https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/sources/sqs-full-example.hcl
 ```
