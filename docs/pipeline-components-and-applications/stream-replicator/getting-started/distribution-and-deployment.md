@@ -1,3 +1,9 @@
+---
+title: "Distribution and Deployment"
+date: "2022-10-20"
+sidebar_position: 200
+---
+
 # Distribution and deployment
 
 ## Distribution options

@@ -1,6 +1,10 @@
-# Getting Started
+---
+title: "Quickstart"
+date: "2022-10-20"
+sidebar_position: 100
+---
 
-## Quickstart
+# Quickstart
 
 The fastest way to get started and experiment with Stream Replicator is to run it via the command line:
 
