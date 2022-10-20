@@ -16,7 +16,7 @@ Filters are a type of transformation which prevent Stream Replicator from furthe
 
 ## Transformation Configuration
 
-To configure transformations, supply one or more `transform {}` block. Choose the transformation using `use "{transformation_name}"`. 
+To configure transformations, supply one or more `transform {}` block. Choose the transformation using `use "${transformation_name}"`. 
 
 Example:
 

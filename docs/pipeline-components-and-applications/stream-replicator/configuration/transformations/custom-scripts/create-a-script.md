@@ -35,13 +35,13 @@ end
 
 Scripts can access the message Data at `input.Data`, and can return modified data by returning it in the `Data` field of the output. Likewise for the partition key to be used for the destination - `input.PartitionKey` and the `PartitionKey` field of the output.
 
-By default, the Data field will be a string. For Snowplow enriched TSV data, the `snowplow_mode` option transforms the data to an object for Javascript, or a table for Lua - field names will be those output by the Snowplow Analytics SDK.
+By default, the Data field will be a string. For Snowplow enriched TSV data, the Javascript transformation has a `snowplow_mode` option, which transforms the data to an object first.
 
 The output of the script must be an object (Javascript) or a table (Lua) which maps to engineProtocol.
 
 ## Transforming Data
 
-To modify the messages data, return an object which conforms to EngineProtocol, with the `Data` field set to the modified data. The `Data` field may be returned as either a string, or an object (Javascript) / table (Lua).
+To modify the message data, return an object which conforms to EngineProtocol, with the `Data` field set to the modified data. The `Data` field may be returned as either a string, or an object (Javascript) / table (Lua).
 
 ```js reference
 https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/docs/docs/documentation-examples/configuration/transformations/custom-scripts/create-a-script-modify-example.js

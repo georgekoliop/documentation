@@ -10,7 +10,7 @@ You can find a guide to writing the scripts themselves - and how the script inte
 
 If a script errors or times out, a [transformation failre](/docs/pipeline-components-and-applications/stream-replicator/concepts/failure-model.md) occurs.
 
-Scripts are provided to the configuration as base-64 encoded strings - you can base-64 encode a script with `cat script.js | base64`.
+Scripts must be available to the runtime of the application at the path provided in the `script_path` configuration option. For docker, this means mounting the script to the container and providing that path.
 
 
 Here is an example of a minimal configuration for the custom Lua script transformation:
