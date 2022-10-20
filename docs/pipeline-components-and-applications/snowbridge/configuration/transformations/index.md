@@ -4,7 +4,7 @@ date: "2022-10-20"
 sidebar_position: 200
 ---
 
-# Transformations Configuration Overview
+# Transformations Configuration
 
 You can configure any number of transformations to run on the data one after another - transformations will run in the order provided. (You can repeatedly specify the same transformation more than once, if needed.) All transformations operate on a single message basis.
 

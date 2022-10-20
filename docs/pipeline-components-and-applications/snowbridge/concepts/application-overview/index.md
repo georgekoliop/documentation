@@ -8,7 +8,7 @@ sidebar_position: 100
 
 ## Architecture Overview
 
-Stream Replicator's architecture is fairly simple - it receives data from one streaming technology (via [Sources](../sources/index.md)), optionally runs filtering and transformation logic on them (message-by-message, via [Transfomations](../transformations/index.md)), and sends the data to another streaming technology or destination (via [Targets](../targets/index.md)). If it is not possible to process or retry the data [as per the failure model](./failure-model.md), it outputs a message to another destination (via Failure Targets).
+Stream Replicator's architecture is fairly simple - it receives data from one streaming technology (via [Sources](../sources/index.md)), optionally runs filtering and transformation logic on them (message-by-message, via [Transfomations](../transformations/index.md)), and sends the data to another streaming technology or destination (via [Targets](../targets/index.md)). If it is not possible to process or retry the data [as per the failure model](../failure-model/index.md), it outputs a message to another destination (via Failure Targets).
 
 ![draft_architecture](./images/stream-replicator-architecture.jpg)
 

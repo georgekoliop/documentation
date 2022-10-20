@@ -93,6 +93,6 @@ https://github.com/snowplow-incubator/stream-replicator-examples-temp/blob/main/
 
 ## Configuration
 
-Once your script is ready, you can configure it in the app by following the [Javascript](./javascript-configuration.md) or [Lua](./lua-configuration.md) configuration pages.
+Once your script is ready, you can configure it in the app by following the [Javascript](../javascript-configuration/index.md) or [Lua](../lua-configuration/index.md) configuration pages.
 
 You can also find some complete example use cases in [the examples section](./examples/).
