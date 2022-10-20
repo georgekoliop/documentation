@@ -6,11 +6,11 @@ sidebar_position: 300
 
 # Configuration Overview
 
-Stream Replicator is configured using [HCL](https://github.com/hashicorp/hcl). To configure Stream Replicator, create your configuration in a file with `.hcl` extension, and set the `STREAM_REPLICATOR_CONFIG_FILE` environment variable to the path to your file.
+Snowbridge is configured using [HCL](https://github.com/hashicorp/hcl). To configure Snowbridge, create your configuration in a file with `.hcl` extension, and set the `STREAM_REPLICATOR_CONFIG_FILE` environment variable to the path to your file.
 
 Inside the configuration, you can reference environment variables using the `env` object. For example, to refer to an environment variable named `MY_ENV_VAR` in your configuration, you can use  `env.MY_ENV_VAR`. We recommend employing environment variables for any sensitive value, such as a password, as opposed to adding the value to the configuration verbatim.
 
-For most options, Stream Replicator uses blocks for configuration. The `use` keyword specifies what you'd like to configure - for example a kinesis source is configured using `source { use "kinesis" {...}}`.
+For most options, Snowbridge uses blocks for configuration. The `use` keyword specifies what you'd like to configure - for example a kinesis source is configured using `source { use "kinesis" {...}}`.
 
 For all configuration blocks except for transformations, you must provide only one block (or none, to use the defaults).
 

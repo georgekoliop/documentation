@@ -6,7 +6,7 @@ sidebar_position: 100
 
 # Quickstart
 
-The fastest way to get started and experiment with Stream Replicator is to run it via the command line:
+The fastest way to get started and experiment with Snowbridge is to run it via the command line:
 
 1. Download the pre-compiled ZIP from the [releases](https://github.com/snowplow-devops/stream-replicator/releases/)
 2. Unzip and run the binary with eg. `echo "hello world" | ./stream-replicator`

@@ -6,7 +6,7 @@ sidebar_position: 500
 
 # Telemetry Configuration
 
-Telemetry allows Snowplow (the maintaners of Stream Replicator) to collect limited data about how the app is being used, in order to help us improve the app.
+Telemetry allows Snowplow (the maintaners of Snowbridge) to collect limited data about how the app is being used, in order to help us improve the app.
 
 This functionality is enabled by default, but can be disabled with the `disable_telemetry` option.
 

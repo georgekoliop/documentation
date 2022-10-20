@@ -8,7 +8,7 @@ sidebar_position: 200
 
 ## Distribution options
 
-Stream Replicator is available on docker:
+Snowbridge is available on docker:
 
 ```bash
 docker pull snowplow/stream-replicator-aws:{version}

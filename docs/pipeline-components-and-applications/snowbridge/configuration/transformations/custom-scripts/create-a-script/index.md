@@ -6,11 +6,11 @@ sidebar_position: 100
 
 # Writing a script
 
-Custom tranformation scripts may be defined in Javascript or Lua, and provided to Stream Replicator.
+Custom tranformation scripts may be defined in Javascript or Lua, and provided to Snowbridge.
 
 ## The scripting interface
 
-The script - whether Lua or Javascript - must define a main function with a single argument. Stream Replicator will pass the engineProtocol data structure as the argument:
+The script - whether Lua or Javascript - must define a main function with a single argument. Snowbridge will pass the engineProtocol data structure as the argument:
 
 
 ```go

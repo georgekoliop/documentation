@@ -20,7 +20,7 @@ Snowbridge is a flexible, low latency tool which can replicate streams of data o
 
 - Statsd and Sentry reporting and monitoring interfaces
 
-Stream Replicator is a generic tool, built to work on any type of data, developed by the Snowplow team. It began life as a closed-source tool developed to deliver various requirements related to Snowplow data, and so some of the features are specific to that data.
+Snowbridge is a generic tool, built to work on any type of data, developed by the Snowplow team. It began life as a closed-source tool developed to deliver various requirements related to Snowplow data, and so some of the features are specific to that data.
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
