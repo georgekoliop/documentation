@@ -27,7 +27,9 @@ _The Snowplow Media Player package is designed to be used with the Snowplow Web 
 
 Each package comes with a set of standard models to take your [Snowplow tracker data](/docs/collecting-data/collecting-from-own-applications/index.md) and produce tables aggregated to levels such as Users, Sessions, and Page Views. You can also add your own models on top, see the page on [custom modules](/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-custom-models/index.md) for more information on how to do this.
 
-The latest versions of all packages support BigQuery, Databricks, Postgres, Redshift, and Snowflake warehouses.
+In addition there is an [Event Splitting](docs/modeling-your-data/modeling-your-data-with-dbt/dbt-event-splitting-model/index.md) package that makes it easy for you to build models that transform your events data into a different structure that may be better suited for downstream consumers.
+
+The latest versions of all packages support BigQuery, Databricks, Postgres, Redshift, and Snowflake warehouses, except for the Event Splitting package.
 
 
 <Tabs groupId="dbt-packages">
@@ -35,31 +37,33 @@ The latest versions of all packages support BigQuery, Databricks, Postgres, Reds
 
 | snowplow-web version | dbt versions        | BigQuery  | Databricks  | Redshift  | Snowflake  | Postgres  |
 | -------------------- | ------------------- | --------- | ----------- | --------- | ---------- | --------- |
-| 0.9.2                | >=1.0.0 to <2.0.0   | ✅        | ✅          | ✅        | ✅         | ✅        |
-| 0.5.1                | >=0.20.0 to <1.0.0  | ✅        | ❌          | ✅        | ✅         | ✅        |
-| 0.4.1                | >=0.18.0 to <0.20.0 | ✅        | ❌          | ✅        | ✅         | ❌        |
-| 0.4.1                | >=0.19.0 to <0.20.0 | ❌        | ❌          | ❌        | ❌         | ✅        |
+| 0.9.2                | >=1.0.0 to <2.0.0   | ✅        | ✅           | ✅        | ✅         | ✅         |
+| 0.5.1                | >=0.20.0 to <1.0.0  | ✅        | ❌           | ✅        | ✅         | ✅         |
+| 0.4.1                | >=0.18.0 to <0.20.0 | ✅        | ❌           | ✅        | ✅         | ❌         |
+| 0.4.1                | >=0.19.0 to <0.20.0 | ❌        | ❌           | ❌        | ❌         | ✅         |
 
 </TabItem>
 <TabItem value="mobile" label="Snowplow Mobile">
 
 | snowplow-mobile version | dbt versions       | BigQuery  | Databricks  | Redshift  | Snowflake  | Postgres  |
 | ----------------------- | ------------------ | --------- | ----------- | --------- | ---------- | --------- |
-| 0.5.4                   | >=1.0.0 to <2.0.0  | ✅        | ✅          | ✅        | ✅         | ✅        |
-| 0.2.0                   | >=0.20.0 to <1.0.0 | ✅        | ❌          | ✅        | ✅         | ✅        |
+| 0.5.4                   | >=1.0.0 to <2.0.0  | ✅         | ✅          | ✅        | ✅          | ✅        |
+| 0.2.0                   | >=0.20.0 to <1.0.0 | ✅         | ❌          | ✅        | ✅          | ✅        |
 
 </TabItem>
 <TabItem value="media" label="Snowplow Media Player">
 
-| snowplow-media-player version | snowplow-web version | dbt versions       | BigQuery  | Databricks  | Redshift  | Snowflake  | Postgres  |
-| ----------------------------- | -------------------- | ------------------ | --------- | ----------- | --------- | ---------- | --------- |
-| 0.3.1                         | >=0.9.0 to <0.10.0   | >=1.0.0 to <2.0.0  | ✅        | ✅          | ✅        | ✅         | ✅        |
-| 0.1.0                         | >=0.6.0 to <0.7.0    | >=0.20.0 to <1.1.0 | ❌        | ❌          | ✅        | ❌         | ✅        |
+| snowplow-media-player version | snowplow-web version | dbt versions       | BigQuery | Databricks | Redshift | Snowflake | Postgres |
+| ----------------------------- | -------------------- | ------------------ | -------- | ---------- | -------- | --------- | -------- |
+| 0.3.1                         | >=0.9.0 to <0.10.0   | >=1.0.0 to <2.0.0  | ✅       | ✅          | ✅       | ✅        | ✅        |
+| 0.1.0                         | >=0.6.0 to <0.7.0    | >=0.20.0 to <1.1.0 | ❌       | ❌          | ✅       | ❌        | ✅        |
+
+</TabItem>
+<TabItem value="split" label="Snowplow Event Splitting">
+
+| snowplow-event-splitting version | snowplow-web version | dbt versions      | BigQuery | Databricks | Redshift | Snowflake | Postgres |
+| ----------------------------- | -------------------- | ----------------- | -------- | ---------- | -------- | --------- | -------- |
+| 0.1.0                         | >=0.9.0 to <1.0.0    | >=1.0.0 to <2.0.0 | ✅        | ✅        | ❌        | ✅        | ❌        |
 
 </TabItem>
 </Tabs>
-
-------
-
-
-
