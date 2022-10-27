@@ -8,7 +8,7 @@ sidebar_position: 104
 
 **The package source code can be found in the [snowplow/dbt-snowplow-event-splitting repo](https://github.com/snowplow/dbt-snowplow-event-splitting), and the docs for the [macro design here](https://snowplow.github.io/dbt-snowplow-event-splitting/#/overview/snowplow_event_splitting).** 
 
-The package provides 2 macros and a python script that is used to generate your models; these [models](https://docs.getdbt.com/docs/build/jinja-macros) provide a table per event type that you specify, and can also produce a thin table of the split events and a user table, for use within downstream ETL tools such as Hightouch. 
+The package provides 2 macros and a python script that is used to generate your models; these [macros](https://docs.getdbt.com/docs/build/jinja-macros) provide a table per event type that you specify, and can also produce a thin table of the split events and a user table, for use within downstream ETL tools such as Hightouch. 
 
 The package does not have any models itself, but generates models in your project as if they were custom models built on top of the [Snowplow web package](/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-web-data-model/index.md), using the `_this_run` table as the base for new events to process each run. Because of this it will be impacted by the filters used within that package, as any custom models you created would be.
 
@@ -21,7 +21,7 @@ This package consists of two macros, a python script, and some example configura
 
   - `split_events` _(macro)_: This macro does the heavy lifting of the package, taking a series of inputs to generate the SQL required to split the events table and flatten (1 level) of any [self-describing event](/docs/understanding-tracking-design/out-of-the-box-vs-custom-events-and-entities/index.md#self-describing-events) or [context](/docs/understanding-tracking-design/predefined-vs-custom-entities/index.md#custom-contexts) columns. While you can use this macro manually it is recommended to create the models that use it by using the script provided.
 
-  - `users_table` _(macro)_: This macro takes a series of inputs to generate the SQL that will produce your users table, using the `user_id` column and any custom contexts from your events table.
+  - `users_table` _(macro)_: This macro takes a series of inputs to generate the SQL that will produce your users table (1 row per user, with the latest version of the contexts you specify as the other columns), using the `user_id` column and any custom contexts from your events table.
 
   - `snowplow_split_events_model_gen.py` _(script)_: This script uses an input configuration to generate your per-event models based on the schemas used to generate those events in the first place. See the [operation](#operation) section for more information.
 
@@ -35,10 +35,10 @@ This package consists of two macros, a python script, and some example configura
 
     optional arguments:
     -h, --help     show this help message and exit
-    --version      Show program's version number and exit.
-    -v, --verbose  Verbose flag for the running of the tool
-    --dryRun       Flag for a dry run (does not write to files).
-    --configHelp   Prints information relating to the structure of the config file.
+    --version      show program's version number and exit.
+    -v, --verbose  verbose flag for the running of the tool
+    --dryRun       flag for a dry run (does not write to files).
+    --configHelp   prints information relating to the structure of the config file.
     ```
 
   - `example_event_split_config.json`: This file is an example of an input to the python script, showing all options and valid values. For additional information about the file structure run `python utils/snowplow_split_events_model_gen.py --configHelp` in your project root.
@@ -55,6 +55,11 @@ The script should always be run from the **root** of your dbt project (the same 
 :::
 
 ### Install python packages
+:::caution
+At least Python 3.7 is required to run the script
+
+:::
+
 The script only requires 2 additional packages (`jsonschema` and `requests`) that are not built into python by default, you can install these by running the below command.
 
 ```bash
@@ -64,7 +69,10 @@ pip install requirements.txt
 ### Configuration File
 The configuration file is used to provide the information needed to generate the SQL models for your split event tables. We use the [schemas](/docs/understanding-tracking-design/understanding-schemas-and-validation/index.md) that are defined in your event tracking to ensure full alignment with the data and reduce the amount of information you need to provide.
 
+:::info
 The config file is a JSON file which can be viewed by running the python script with the `--configHelp` flag. The config file can be located anywhere in your project, but it must have the following structure. Note that you must provide **at least** one of `event_columns`, `self_describing_event_schema` or `context_schemas` for each event listed.
+
+:::
 
 - `config` _(required - object)_:
   - `resolver_file_path` _(required - string)_: Relative path to your resolver config json, or `"default"` to use iglucentral only
