@@ -1,5 +1,5 @@
 ---
-title: "Distribution and Deployment"
+title: "Distribution and deployment"
 date: "2022-10-20"
 sidebar_position: 200
 ---

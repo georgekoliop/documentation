@@ -1,5 +1,5 @@
 ---
-title: "Failure Model"
+title: "Failure model"
 date: "2022-10-20"
 sidebar_position: 600
 ---
@@ -8,20 +8,19 @@ sidebar_position: 600
 
 ## Failure targets
 
-When Snowbridge hits an unrecoverable error - for example [oversized](#oversized-data) or [invalid](#invalid-data) data - it will emit a [failed event](/docs/managing-data-quality/failed-events/understanding-failed-events#what-is-a-failed-event) to the configured failure target. A failure target is the same as a target, the only difference is that the configured destination will receive failed events.
+When Snowbridge hits an unrecoverable error — for example [oversized](#oversized-data) or [invalid](#invalid-data) data — it will emit a [failed event](/docs/managing-data-quality/failed-events/understanding-failed-events#what-is-a-failed-event) to the configured failure target. A failure target is the same as a target, the only difference is that the configured destination will receive failed events.
 
 You can find more detail on setting up a failure target, in the [configuration section](/docs/pipeline-components-and-applications/snowbridge/configuration/targets/index.md).
 
 ## Failure cases
 
-There are several different failures that Snowbridge may hit:
+There are several different failures that Snowbridge may hit.
 
 ### Target failure
 
 This is where a request to the destination technology fails or is rejected - for example a http 400 response is received. When Snowbridge hits this failure, it will retry 5 times. If all 5 attempts fail, it will be reported as a 'MsgFailed' for monitoring purposes, and will proceed without acking the failed Messages. As long as the source's acking model allows for it, these will be re-processed through Snowbridge again.
 
 Note that this means failures on the receiving end (eg. if an endpoint is unavailable), mean Snowbridge will continue to attempt to process the data until the issue is fixed.
-
 
 ### Oversized data
 
@@ -49,7 +48,7 @@ Writes of invalid messages to the failure target will be recorded with 'InvalidM
 
 Snowbridge is built to be averse to crashes, but there are two scenarios where it would be expected to crash.
 
-Firstly, if it hits an error in retrieving data from the source stream, it will log an error and crash. If this occurs it is normally a case of misconfiguration of the source. If that is not the case, it will be safe to redeploy the app - it will attempt to begin from the first unacked message. This may cause duplicates.
+Firstly, if it hits an error in retrieving data from the source stream, it will log an error and crash. If this occurs it is normally a case of misconfiguration of the source. If that is not the case, it will be safe to redeploy the app — it will attempt to begin from the first unacked message. This may cause duplicates.
 
 Secondly, as described above, where there are failures it will attempt to reprocess the data if it can, and where failures aren't recoverable it will attempt to handle that via a failure target. Normally, even reaching this point is rare.
 

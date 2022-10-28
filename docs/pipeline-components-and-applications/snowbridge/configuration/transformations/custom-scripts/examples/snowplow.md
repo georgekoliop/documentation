@@ -1,4 +1,4 @@
-# Javascript Example - Snowplow Data
+# Snowplow data
 
 For this example, the input data is a valid Snowplow TSV event - so we can enable `snowplow_mode`, which will convert the data to a JSON before passing it to the script as a JSON object.
 

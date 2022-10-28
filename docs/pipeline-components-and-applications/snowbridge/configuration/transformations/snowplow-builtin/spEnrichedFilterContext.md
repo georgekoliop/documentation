@@ -1,14 +1,14 @@
-# spEnrichedFilterContext Configuration
+# spEnrichedFilterContext
 
 `spEnrichedFilterContext`: Filters messages based on a regex match against a field in a context.
 
 This transformation is for use on fileds from contexts.
 
-Note that if the same context is present in the data more than once, one instance of a match is enough for the regex condition to be considered a match - and the message to be kept.
+Note that if the same context is present in the data more than once, one instance of a match is enough for the regex condition to be considered a match — and the message to be kept.
 
-The full parsed context name must be provided, in camel case, in the format returned by the Snowplow analytics SDK: `contexts_{vendor}_{name}_{major version}` - for example `contexts_nl_basjes_yauaa_context_1`.
+The full parsed context name must be provided, in camel case, in the format returned by the Snowplow analytics SDK: `contexts_{vendor}_{name}_{major version}` — for example `contexts_nl_basjes_yauaa_context_1`.
 
-The path to the field to be matched must then be provided as a jsonpath (dot notation and square braces only) - for example `test1.test2[0].test3`.
+The path to the field to be matched must then be provided as a jsonpath (dot notation and square braces only) — for example `test1.test2[0].test3`.
 
 Filters can be used in one of two ways, which is determined by the `filter_action` option. `filter_action` determines the behaviour of the app when the regex provided evaluates to `true`. If it's set to `"keep"`, the app will complete the remaining transformations and send the message to the destination (unless a subsequent filter determines otherwise). If it's set to `"drop"`, the message will be acked and discarded, without continuing to the next transformation or target.
 
