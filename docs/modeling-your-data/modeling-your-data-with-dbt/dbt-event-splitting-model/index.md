@@ -21,7 +21,7 @@ This package consists of two macros, a python script, and some example configura
 
   - `split_events` _(macro)_: This macro does the heavy lifting of the package, taking a series of inputs to generate the SQL required to split the events table and flatten (1 level) of any [self-describing event](/docs/understanding-tracking-design/out-of-the-box-vs-custom-events-and-entities/index.md#self-describing-events) or [context](/docs/understanding-tracking-design/predefined-vs-custom-entities/index.md#custom-contexts) columns. While you can use this macro manually it is recommended to create the models that use it by using the script provided.
 
-  - `users_table` _(macro)_: This macro takes a series of inputs to generate the SQL that will produce your users table (1 row per user, with the latest version of the contexts you specify as the other columns), using the `user_id` column and any custom contexts from your events table.
+  - `users_table` _(macro)_: This macro takes a series of inputs to generate the SQL that will produce your users table (1 row per user, with the latest values of the contexts you specify as the other columns), using the `user_id` column and any custom contexts from your events table.
 
   - `snowplow_split_events_model_gen.py` _(script)_: This script uses an input configuration to generate your per-event models based on the schemas used to generate those events in the first place. See the [operation](#operation) section for more information.
 
@@ -41,7 +41,7 @@ This package consists of two macros, a python script, and some example configura
     --configHelp   prints information relating to the structure of the config file.
     ```
 
-  - `example_event_split_config.json`: This file is an example of an input to the python script, showing all options and valid values. For additional information about the file structure run `python utils/snowplow_split_events_model_gen.py --configHelp` in your project root.
+  - `example_event_split_config.json`: This file is an example of an input to the python script, showing all options and valid values. For additional information about the file structure run `python dbt_packages/snowplow_event_splitting/utils/snowplow_split_events_model_gen.py --configHelp` in your project root.
 
   - `example_resolver_config.json`: This file is an example [Iglu Resolver](/docs/pipeline-components-and-applications/iglu/iglu-resolver/index.md) configuration. It supports custom iglu servers with API keys, but does not currently support accessing embedded registries. For more information please see the Resolver docs.
 
@@ -56,7 +56,7 @@ The script should always be run from the **root** of your dbt project (the same 
 
 ### Install python packages
 :::caution
-At least Python 3.7 is required to run the script
+Python >=3.7 is required to run the script
 
 :::
 
@@ -94,10 +94,17 @@ The config file is a JSON file which can be viewed by running the python script 
   - `event_n` _(option - object)_
 - `users` _(option - array)_: Array of strings of schemas for your user contexts to add to your users table as columns, if not provided will not generate users model
 
-An example configuration can be found in the `utils/example_event_split_config.json` file.
+An example configuration can be found in the `utils/example_event_split_config.json` file within the package.
+
+#### Using a different materialization
+By default the models use the `snowplow_incremental` method, which can be overwritten by setting the `snowplow__incremental_materialization` variable in your `dbt_project.yml`. See more details in the [Snowplow Materialization docs](/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-advanced-usage/dbt-incremental-materialization/index.md).
+
+:::tip
+If you are overwriting the materialization in both this **and** the web models, you can instead set the variable globally without specifying the package scope to simplify your file. See more details on variable precedence in the [dbt docs](https://docs.getdbt.com/docs/build/project-variables#variable-precedence).
+:::
 
 ### Producing your models
-To produce your models you need to run `python utils/snowplow_split_events_model_gen.py path/to/your/config` from the root of your dbt project. This will produce one `.sql` file for each of the event names specified in the `events` part of your configuration, one `.sql` file for the combined filtered events table if a name was provided, and one `.sql` file for your users table if schema(s) were provided. These files will be in your `models` folder in the sub-folder specified in your config. 
+To produce your models you need to run `python dbt_packages/snowplow_event_splitting/utils/snowplow_split_events_model_gen.py path/to/your/config` (or equivalent path in Windows) from the root of your dbt project. This will produce one `.sql` file for each of the event names specified in the `events` part of your configuration, one `.sql` file for the combined filtered events table if a name was provided, and one `.sql` file for your users table if schema(s) were provided. These files will be in your `models` folder in the sub-folder specified in your config. 
 
 :::info
 Custom error messages have been added to the script to try and catch any issues and provide suggested resolutions to any issues such as invalid configurations or failing validation of schemas. If you persist in getting errors when validating schemas you believe you be correct, you can disable this validation by setting `validate_schemas` to `false` in your config. 
